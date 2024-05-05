@@ -1,0 +1,276 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(7, 7, 70);
+    color: white;
+    font-family: "Briem Hand", cursive;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 80px;
+    background-color: rgb(21, 21, 98);
+}
+nav ul{
+    display: flex;
+    justify-content: center;
+}
+nav ul li{
+    list-style-type: none;
+    margin: 0 23px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: white;
+}
+nav ul li a:hover{
+    color: rgb(25, 113, 190);
+}
+main hr{
+    border: 0;
+    background: #9c97f1;
+    height: 1.2px;
+    margin: 40px 84px;
+    border-radius: 3px solid;
+}
+.left{
+    font-weight: 600;
+    font-size: 25px;
+}
+.right{
+    font-weight: 500;
+    font-size: 20px;
+}
+.firstSection{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 120px 0;
+}
+.firstSection > div{
+    width: 35%;
+}
+.leftSection{
+    font-size: 2.5rem;
+    
+    
+}
+.leftSection .buttons{
+  margin-top: 50px;
+}
+.leftSection .btn{
+  margin-top: 50px;
+  padding: 12px;
+  background-color: #1e2167;
+  color: white;
+  border: 2px solid white;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Briem Hand", cursive;
+  cursor: pointer;
+}
+.rightSection img{
+   
+    width: 96%;
+}
+.purple{
+    color: rgb(146, 39, 246);
+}
+.secondSection{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.container {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 80%;
+}
+
+.section-heading {
+font-size: 50px;
+margin-bottom: 30px;
+text-align: center;
+margin-top: 10px;
+text-decoration: underline;
+
+}
+
+.card {
+width:90%;
+height: 110px;
+margin: 10px;
+border-radius: 20px;
+background: #163662;
+box-shadow: 8px 8px 16px #807d7d, -8px -8px 16px #626060;
+display: flex;
+align-items: center;
+position: relative; /* Added for positioning */
+}
+
+
+
+.card-logo img{
+max-width: 100px;
+height: 100px;
+/* margin: 20px; */
+border-radius: 50%;
+background-color: #fff;
+box-shadow: 5px 5px 10px #bcbcbc, -5px -5px 10px #ffffff;
+position: absolute; /* Added for positioning */
+left: 20px; /* Adjusted positioning */
+top: 50%; /* Added for vertical centering */
+transform: translateY(-50%); /* Added for vertical centering */
+}
+.card-logo{
+max-width: 10px;
+}
+
+.card-content {
+text-align: left;
+margin-left: 140px; /* Adjusted margin to make space for logo */
+
+
+}
+.card-content a{
+color: white;
+font-size: 20px;
+}
+
+.thirSection{
+width: 100%;
+margin: 0;
+display: flex;
+align-items: center;
+justify-content: space-around;
+
+}
+@media screen and (max-width: 1029px) {
+
+.firstSection{
+/* flex-direction: column-reverse; */
+flex-wrap: wrap;
+margin: 20px;
+}
+firstSection > div{
+width: 40%;
+}
+.leftSection{
+display: flex;
+flex-wrap: wrap;
+font-size: 2.2rem;
+}
+.leftSection .buttons {margin-top: 0;}
+.leftSection .btn{margin-top: 0;}
+}
+@media screen and (max-width: 729px) {
+.firstSection > div{
+width: 65%;
+/* flex-direction: column-reverse; */
+}
+.firstSection{
+flex-direction: column-reverse;
+}
+/* .card{
+width: 107% ;
+} */
+.container{
+width: 94%;
+height: 585px;
+
+}
+.card-logo img{
+height: 58px;
+}
+.card-content{
+margin-left: 98px ;
+font-size: 14px ;
+}
+
+}
+@media screen and (max-width: 620px) {
+.firstSection{
+flex-direction: column-reverse;
+}
+.firstSection > div{
+width: 80% ;
+}
+.card{
+width: 90%;
+}
+.card-content{
+font-size: 12px ;
+}
+
+
+}
+@media screen and (max-width: 550px) {
+nav{
+width: 104%;
+height: 65px ;
+}
+nav ul{
+font-size: 14px ;
+}
+.left{
+font-size: 14px ;
+}
+
+}
+@media screen and (max-width: 420px) {
+nav{
+width: 120%  ;
+}
+.firstSection{
+width: 80%;
+}
+.firstSection > div{
+width: 130%;
+}
+.leftSection{
+width: 99%;
+font-size: 30px;
+}
+.leftSection .btn{
+margin-top: 0;
+padding: 4px;
+height: 40px;
+}
+.leftSection .button{
+height: 40px;
+font-size: 14px;
+/* display: flex;  */
+justify-content: center;
+align-items: center;
+margin: 15px;
+padding-top: 0;
+}
+main hr{
+margin: 25px ;
+}
+.secondSection{
+width: 115% ;
+
+}
+.thirSection{
+width: 115% ;
+}
+.card{
+width: 89%;
+height: 82px ;
+}
+.card-content{
+font-size: 10px;
+}
+.card-content a{
+font-size: 10px;
+}
+
+}

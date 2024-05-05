@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Briem+Hand:wght@100..900&family=Lemon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>My_Portfolio</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left">Aditya's Portfolio</div>
+            <div class="right"><ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/">Skilss</a></li>
+                <li><a href="/">Projects</a></li>
+                <li><a href="/">Contacts</a></li>
+            </ul></div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="firstSection">
+            <div class="leftSection">
+                <h4>Hii, My Name is <span class="purple">Aditya</span></h4>
+                <div>I am a <span id="element"></span></div>
+                <div class="buttons">
+                  <button class="btn">Download Resume</button>
+                  <button class="btn" id="visit">Visit Github</button>
+                </div>
+
+            </div>
+            <div class="rightSection">
+                <img src="/image/Screenshot__183_-removebg-preview.png" alt="">
+
+            </div>
+        </section>
+        <hr>
+        <section class="secondSection">
+            <div class="container">
+                <h2 class="section-heading">*Skills*</h2>
+                <div class="card">
+                  <div class="card-logo"><img src="/image/icons8-html-480.png" alt=""></div>
+                  <div class="card-content">
+                    <h3>HTML</h3>
+                    <p>Masters in this feild.I can make any types of webpage </p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-logo">
+                    <img src="/image/icons8-css-480.png" alt="">
+                  </div>
+                  <div class="card-content">
+                    <h3>CSS</h3>
+                    <p>All basic and core concepts completed</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-logo">
+                    <img src="/image/icons8-js-480.png" alt="">
+                  </div>
+                  <div class="card-content">
+                    <h3>Javascript</h3>
+                    <p>All basic and core conecepts cleared...</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-logo">
+                    <img src="/image/icons8-python-750.png" alt="">
+                  </div>
+                  <div class="card-content">
+                    <h3>Python</h3>
+                    <p> All Basic and core concept completed</p>
+                  </div>
+                </div>
+                <div class="card">
+                    <div class="card-logo">
+                      <img src="/image/icons8-react-js-480.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <h3>React</h3>
+                      <p>React learner</p>
+                    </div>
+                  </div>
+              </div>
+        </section>
+        <hr>
+        <section class="thirSection">
+            <div class="container">
+                <h2 class="section-heading">*Projects*</h2>
+                <div class="card">
+                  <div class="card-logo"><img src="/image/193782622-db0071f8-122e-4909-83a8-fe5da257febc.png" alt=""></div>
+                  <div class="card-content">
+                    <h3 style="text-decoration: underline;">TextUtils</h3>
+                    <p>TextUtilis: Where words find their power through simplicity.Transforming text effortlessly, one line at a time.<a href="https://adityaupadhyay2610.github.io/TextUtils-app/" > Click Here</a></p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-logo">
+                    <img src="/image/OIP__1_-removebg-preview.png" alt="">
+                  </div>
+                  <div class="card-content">
+                    <h3 style="text-decoration: underline;">Currency-Exchanger</h3>
+                    <p>API-powered currency exchange, with rates and insights tailored to your destination. Know your currency, exchange with confidence. <a href="https://github.com/AdityaUpadhyay2610/currency-exchanger.git" >Click here</a></p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-logo">
+                    <img src="/image/OIP__2_-removebg-preview.png" alt="">
+                  </div>
+                  <div class="card-content">
+                    <h3 style="text-decoration: underline;">TIC_TAC_TOE Game</h3>
+                    <p>Enter the grid and engage in a timeless battle of Xs and Os.Strategize, compete, and claim victory in the classic game of Tic Tac Toe. <a href="https://github.com/AdityaUpadhyay2610/TIC-_TAC_TOE-GAMES.git" > Click Here</a></p>
+                  </div>
+                </div>
+              </div>
+        </section>
+        <hr>
+        <section>
+          
+
+        </section>
+        
+    </main>
+    <!-- <hr> -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('#element', {
+          strings: ['Frontend Devloper', 'Learner of React Js.'],
+          typeSpeed: 50,
+        });
+      </script>
+      <script>
+        document.querySelector("#visit").addEventListener("click", function() {
+          window.location.href = "https://github.com/AdityaUpadhyay2610";
+        });
+      </script>
+</body>
+</html>
