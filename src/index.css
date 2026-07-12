@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: #12141c;
+  --color-panel: #181c27;
+  --color-panel2: #1f2430;
+  --color-line: #2a3040;
+  --color-paper: #f3f1ea;
+  --color-mute: #8891a6;
+  --color-amber: #e8a33d;
+  --color-teal: #5fc9be;
+}
+
+html.theme-light {
+  --color-ink: #f8efd0;
+  --color-panel: #fff8e5;
+  --color-panel2: #f3e7b8;
+  --color-line: #1f1f1f;
+  --color-paper: #161616;
+  --color-mute: #6d6752;
+  --color-amber: #b97a0f;
+  --color-teal: #0f766e;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: "Inter", sans-serif;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+::selection {
+  background-color: var(--color-amber);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-line);
+  border-radius: 999px;
+  border: 2px solid var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
