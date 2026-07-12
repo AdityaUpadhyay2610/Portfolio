@@ -7,6 +7,9 @@ import {
   Mail,
 } from "lucide-react";
 import { CornerMarks } from "./ui.jsx";
+import adityaImg from "../assets/Aditya.png";
+import resumePdf from "../assets/Aditya_Resume.pdf";
+
 
 export default function Home() {
   return (
@@ -28,7 +31,7 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#FFF7E2] via-[#F8EBC5] to-[#F4D27A] shadow-[0_25px_70px_rgba(0,0,0,0.18)]">
 
               <img
-                src="./Aditya.png"
+                src={adityaImg}
                 alt="Aditya Upadhyay"
                 className="h-full w-full object-cover"
               />
@@ -75,7 +78,7 @@ export default function Home() {
             </a>
 
             <a
-              href="/Aditya_Resume.pdf"
+              href={resumePdf}
               download
               className="inline-flex items-center gap-2 rounded-xl border border-line px-7 py-3 text-sm font-semibold text-paper transition-all duration-300 hover:border-amber hover:text-amber"
             >
