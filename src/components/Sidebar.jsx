@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router";
 import {
   Home,
   User,
@@ -12,16 +13,18 @@ import {
   MoonStar,
   SunMedium,
 } from "lucide-react";
+import { usePortfolio, NAV_ITEMS } from "../context/PortfolioContext.jsx";
 
-const NAV_ITEMS = [
-  { id: "home", label: "Home", index: "01", icon: Home },
-  { id: "about", label: "About", index: "02", icon: User },
-  { id: "skills", label: "Skills", index: "03", icon: Code2 },
-  { id: "projects", label: "Projects", index: "04", icon: FolderGit2 },
-  { id: "contact", label: "Contact", index: "05", icon: Mail },
-];
+const ICON_MAP = {
+  Home,
+  User,
+  Code2,
+  FolderGit2,
+  Mail,
+};
 
-export default function Sidebar({ active, isOpen, theme, onToggle, onNavigate, onToggleTheme }) {
+export default function Sidebar() {
+  const { active, isOpen, theme, onToggle, onNavigate, onToggleTheme } = usePortfolio();
   const activeIndex = Math.max(
     0,
     NAV_ITEMS.findIndex((item) => item.id === active)
@@ -60,8 +63,8 @@ export default function Sidebar({ active, isOpen, theme, onToggle, onNavigate, o
         {/* logo */}
         <div className="px-6 md:px-0 lg:px-8 pt-8 pb-6 flex md:justify-center lg:justify-start">
           <div className="flex w-full items-center justify-between gap-3">
-            <a
-              href="#home"
+            <NavLink
+              to="/"
               onClick={() => onNavigate("home")}
               className="flex items-center gap-3 group"
             >
@@ -76,7 +79,7 @@ export default function Sidebar({ active, isOpen, theme, onToggle, onNavigate, o
                   Aspiring Full-Stack Developer
                 </span>
               </span>
-            </a>
+            </NavLink>
             <button
               type="button"
               onClick={onToggleTheme}
@@ -95,14 +98,26 @@ export default function Sidebar({ active, isOpen, theme, onToggle, onNavigate, o
             <div className="hidden md:block absolute left-0 lg:left-0 top-1 bottom-1 w-px bg-line md:mx-auto md:relative md:h-auto" />
           </div>
 
+          <div className="mb-4 flex items-center justify-between rounded-md border border-line bg-panel2/70 px-3 py-2 md:hidden">
+            <span className="text-sm text-mute">Theme</span>
+            <button
+              type="button"
+              onClick={onToggleTheme}
+              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-panel text-paper transition-colors hover:border-amber hover:text-amber"
+            >
+              {theme === "light" ? <MoonStar size={16} /> : <SunMedium size={16} />}
+            </button>
+          </div>
+
           <ul className="space-y-1">
             {NAV_ITEMS.map((item) => {
-              const Icon = item.icon;
+              const Icon = ICON_MAP[item.icon];
               const isActive = item.id === active;
               return (
                 <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
+                  <NavLink
+                    to={item.path}
                     onClick={() => onNavigate(item.id)}
                     className={`relative flex items-center gap-3 md:gap-0 lg:gap-3 md:justify-center lg:justify-start
                       py-3 px-3 md:px-0 lg:px-3 rounded-md transition-colors group
@@ -120,7 +135,7 @@ export default function Sidebar({ active, isOpen, theme, onToggle, onNavigate, o
                     <span className="ml-auto hidden sm:inline font-mono text-[11px] text-mute/70">
                       {item.index}
                     </span>
-                  </a>
+                  </NavLink>
                 </li>
               );
             })}
