@@ -65,7 +65,7 @@ export default function Sidebar() {
           <div className="flex w-full items-center justify-between gap-3">
             <NavLink
               to="/"
-              onClick={() => onNavigate("home")}
+              onClick={() => onNavigate("/", "home")}
               className="flex items-center gap-3 group"
             >
               <span className="flex items-center justify-center w-11 h-11 rounded-md border-2 border-amber font-mono font-medium text-amber text-sm shrink-0">
@@ -118,7 +118,7 @@ export default function Sidebar() {
                 <li key={item.id}>
                   <NavLink
                     to={item.path}
-                    onClick={() => onNavigate(item.id)}
+                    onClick={() => onNavigate(item.path, item.id)}
                     className={`relative flex items-center gap-3 md:gap-0 lg:gap-3 md:justify-center lg:justify-start
                       py-3 px-3 md:px-0 lg:px-3 rounded-md transition-colors group
                       ${isActive ? "text-amber" : "text-mute hover:text-paper"}`}

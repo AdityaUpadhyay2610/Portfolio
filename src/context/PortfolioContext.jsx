@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 const PortfolioContext = createContext();
 
@@ -29,6 +29,7 @@ function getActiveFromPath(pathname) {
 }
 
 export function PortfolioProvider({ children }) {
+  const navigate = useNavigate();
   const location = useLocation();
   const [active, setActive] = useState(() => getActiveFromPath(location.pathname));
   const [isOpen, setIsOpen] = useState(false);
@@ -49,9 +50,10 @@ export function PortfolioProvider({ children }) {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const handleNavigate = (id) => {
+  const handleNavigate = (path, id) => {
     setActive(id);
     setIsOpen(false);
+    navigate(path);
   };
 
   const handleToggle = () => {

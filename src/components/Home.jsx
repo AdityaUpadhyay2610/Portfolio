@@ -9,9 +9,11 @@ import {
 import { CornerMarks } from "./ui.jsx";
 import adityaImg from "../assets/Aditya.png";
 import resumePdf from "../assets/Aditya_Resume.pdf";
+import { usePortfolio } from "../context/PortfolioContext.jsx";
 
 
 export default function Home() {
+  const { onNavigate } = usePortfolio();
   return (
     <section
       id="home"
@@ -69,13 +71,13 @@ export default function Home() {
           {/* Buttons */}
           <div className="flex flex-wrap gap-4">
 
-            <a
-              href="#projects"
+            <button
+              onClick={() => onNavigate("/projects", "projects")}
               className="inline-flex items-center gap-2 rounded-xl bg-amber px-7 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-amber/90"
             >
               View My Work
               <ArrowDown size={18} />
-            </a>
+            </button>
 
             <a
               href={resumePdf}
