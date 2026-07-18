@@ -1,5 +1,4 @@
 import React from "react";
-import { Eyebrow, SectionHeading } from "./ui.jsx";
 
 const STATS = [
   { value: "React", label: "Frontend Skills" },
@@ -14,8 +13,18 @@ export default function About() {
       className="min-h-screen flex items-center px-6 sm:px-10 md:px-12 lg:px-20 py-28 border-b border-line"
     >
       <div className="w-full max-w-4xl">
-        <Eyebrow index="02">About</Eyebrow>
-        <SectionHeading>A little about me</SectionHeading>
+        {/* Section Heading Tag (previously <Eyebrow>) */}
+        <p className="flex items-center gap-2 font-mono text-xs tracking-widest text-amber uppercase mb-4">
+          <span className="text-mute">§</span>
+          02
+          <span className="h-px w-8 bg-line" />
+          About
+        </p>
+
+        {/* Section Sub-heading (previously <SectionHeading>) */}
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-paper mb-8 pb-4 border-b border-dashed border-line">
+          A little about me
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="md:col-span-2 space-y-4 font-body text-base text-mute leading-relaxed">
@@ -47,3 +56,4 @@ export default function About() {
     </section>
   );
 }
+

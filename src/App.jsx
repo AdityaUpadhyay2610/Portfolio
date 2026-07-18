@@ -8,12 +8,26 @@ import About from "./components/About.jsx";
 import Skills from "./components/Skills.jsx";
 import Projects from "./components/Projects.jsx";
 import Contact from "./components/Contact.jsx";
+import ScrollManager from "./components/ScrollManager.jsx";
+
+function MainPage() {
+  return (
+    <>
+      <Home />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+    </>
+  );
+}
 
 function AppContent() {
   const { theme, onToggleTheme } = usePortfolio();
 
   return (
     <div className="min-h-screen bg-ink text-paper transition-colors duration-300">
+      <ScrollManager />
       <button
         type="button"
         onClick={onToggleTheme}
@@ -26,12 +40,12 @@ function AppContent() {
       <Sidebar />
       <main className="md:ml-sidebar-md lg:ml-sidebar">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/" element={<MainPage />} />
+          <Route path="/home" element={<MainPage />} />
+          <Route path="/about" element={<MainPage />} />
+          <Route path="/skills" element={<MainPage />} />
+          <Route path="/projects" element={<MainPage />} />
+          <Route path="/contact" element={<MainPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

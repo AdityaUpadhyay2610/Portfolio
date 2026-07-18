@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Mail, MapPin, Send } from "lucide-react";
-import { Eyebrow, SectionHeading, Annotation } from "./ui.jsx";
 
 export default function Contact() {
   const [status, setStatus] = useState("idle");
@@ -17,8 +16,18 @@ export default function Contact() {
       className="min-h-screen flex items-center px-6 sm:px-10 md:px-12 lg:px-20 py-28"
     >
       <div className="w-full max-w-4xl">
-        <Eyebrow index="05">Contact</Eyebrow>
-        <SectionHeading>Let's work together</SectionHeading>
+        {/* Section Heading Tag (previously <Eyebrow>) */}
+        <p className="flex items-center gap-2 font-mono text-xs tracking-widest text-amber uppercase mb-4">
+          <span className="text-mute">§</span>
+          05
+          <span className="h-px w-8 bg-line" />
+          Contact
+        </p>
+
+        {/* Section Sub-heading (previously <SectionHeading>) */}
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-paper mb-8 pb-4 border-b border-dashed border-line">
+          Let's work together
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
@@ -27,14 +36,19 @@ export default function Contact() {
               open — I usually reply within a day or two.
             </p>
             <div className="space-y-4">
-              <Annotation>
+              {/* Contact item annotation (previously <Annotation>) */}
+              <div className="flex items-center gap-2 font-mono text-[11px] text-mute">
+                <span className="w-5 h-px bg-mute/60" />
                 <Mail size={14} className="text-amber" />
                 aditya2610upadhyay@gmail.com
-              </Annotation>
-              <Annotation>
+              </div>
+
+              {/* Contact item annotation (previously <Annotation>) */}
+              <div className="flex items-center gap-2 font-mono text-[11px] text-mute">
+                <span className="w-5 h-px bg-mute/60" />
                 <MapPin size={14} className="text-amber" />
                 Greater Noida, Uttar Pradesh, India — open to remote work
-              </Annotation>
+              </div>
             </div>
           </div>
 
@@ -97,3 +111,4 @@ export default function Contact() {
     </section>
   );
 }
+

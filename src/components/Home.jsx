@@ -6,7 +6,6 @@ import {
   Linkedin,
   Mail,
 } from "lucide-react";
-import { CornerMarks } from "./ui.jsx";
 import adityaImg from "../assets/Aditya.png";
 import resumePdf from "../assets/Aditya_Resume.pdf";
 import { usePortfolio } from "../context/PortfolioContext.jsx";
@@ -38,10 +37,17 @@ export default function Home() {
                 className="h-full w-full object-cover"
               />
 
-              <CornerMarks className="inset-4" />
+              {/* Corner Crop Marks (previously <CornerMarks>) */}
+              <div className="pointer-events-none absolute inset-4" aria-hidden="true">
+                <span className="absolute w-3 h-3 border-amber/70 top-0 left-0 border-l-2 border-t-2" />
+                <span className="absolute w-3 h-3 border-amber/70 top-0 right-0 border-r-2 border-t-2" />
+                <span className="absolute w-3 h-3 border-amber/70 bottom-0 left-0 border-l-2 border-b-2" />
+                <span className="absolute w-3 h-3 border-amber/70 bottom-0 right-0 border-r-2 border-b-2" />
+              </div>
             </div>
           </div>
         </div>
+
 
         {/* RIGHT SIDE */}
         <div className="max-w-2xl">

@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
+// Create the Context so child components can share this global data
 const PortfolioContext = createContext();
 
+// Navigation items definition (used in Sidebar)
 export const NAV_ITEMS = [
   { id: "home", label: "Home", index: "01", icon: "Home", path: "/" },
   { id: "about", label: "About", index: "02", icon: "User", path: "/about" },
@@ -11,37 +13,22 @@ export const NAV_ITEMS = [
   { id: "contact", label: "Contact", index: "05", icon: "Mail", path: "/contact" },
 ];
 
-function getActiveFromPath(pathname) {
-  switch (pathname) {
-    case "/about":
-      return "about";
-    case "/skills":
-      return "skills";
-    case "/projects":
-      return "projects";
-    case "/contact":
-      return "contact";
-    case "/home":
-    case "/":
-    default:
-      return "home";
-  }
-}
-
 export function PortfolioProvider({ children }) {
   const navigate = useNavigate();
-  const location = useLocation();
-  const [active, setActive] = useState(() => getActiveFromPath(location.pathname));
+
+  // 1. Keep track of which section is currently active/highlighted in the sidebar
+  const [active, setActive] = useState("home");
+
+  // 2. Keep track of whether the mobile menu sidebar drawer is open
   const [isOpen, setIsOpen] = useState(false);
+
+  // 3. Keep track of the current theme (light or dark mode)
   const [theme, setTheme] = useState(() => {
-    if (typeof window === "undefined") return "dark";
+    // If it's saved in local storage, use that. Otherwise, default to "dark".
     return localStorage.getItem("theme") || "dark";
   });
 
-  useEffect(() => {
-    setActive(getActiveFromPath(location.pathname));
-  }, [location.pathname]);
-
+  // Whenever the theme changes, update the document class list and localStorage
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle("theme-light", theme === "light");
@@ -50,22 +37,27 @@ export function PortfolioProvider({ children }) {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  // Handler for navigation: updates active item, closes mobile menu, and changes URL route
   const handleNavigate = (path, id) => {
     setActive(id);
-    setIsOpen(false);
+    setIsOpen(false); // Close the mobile drawer if it's open
     navigate(path);
   };
 
+  // Handler to open/close the mobile menu sidebar drawer
   const handleToggle = () => {
     setIsOpen((prev) => !prev);
   };
 
+  // Handler to switch between light and dark themes
   const handleToggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
+  // Expose these states and functions to our components
   const value = {
     active,
+    setActive,
     isOpen,
     theme,
     onNavigate: handleNavigate,
@@ -80,10 +72,12 @@ export function PortfolioProvider({ children }) {
   );
 }
 
+// Custom hook to make it super easy for components to use our Context
 export function usePortfolio() {
   const context = useContext(PortfolioContext);
   if (!context) {
-    throw new Error("usePortfolio must be used within PortfolioProvider");
+    throw new Error("usePortfolio must be used within a PortfolioProvider");
   }
   return context;
 }
+

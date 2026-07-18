@@ -1,6 +1,5 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
-import { Eyebrow, SectionHeading, CornerMarks } from "./ui.jsx";
 
 const PROJECTS = [
   {
@@ -33,8 +32,18 @@ export default function Projects() {
       className="min-h-screen flex items-center px-6 sm:px-10 md:px-12 lg:px-20 py-28 border-b border-line"
     >
       <div className="w-full max-w-5xl">
-        <Eyebrow index="04">Projects</Eyebrow>
-        <SectionHeading>A few things I've built</SectionHeading>
+        {/* Section Heading Tag (previously <Eyebrow>) */}
+        <p className="flex items-center gap-2 font-mono text-xs tracking-widest text-amber uppercase mb-4">
+          <span className="text-mute">§</span>
+          04
+          <span className="h-px w-8 bg-line" />
+          Projects
+        </p>
+
+        {/* Section Sub-heading (previously <SectionHeading>) */}
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold text-paper mb-8 pb-4 border-b border-dashed border-line">
+          A few things I've built
+        </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {PROJECTS.map((project) => (
@@ -43,7 +52,14 @@ export default function Projects() {
               href="#"
               className="group relative flex flex-col justify-between p-6 rounded-lg bg-panel2 border border-line hover:border-amber/60 transition-colors min-h-[220px]"
             >
-              <CornerMarks className="inset-2 opacity-0 group-hover:opacity-100 transition-opacity" />
+              {/* Corner Crop Marks (previously <CornerMarks>) */}
+              <div className="pointer-events-none absolute inset-2 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
+                <span className="absolute w-3 h-3 border-amber/70 top-0 left-0 border-l-2 border-t-2" />
+                <span className="absolute w-3 h-3 border-amber/70 top-0 right-0 border-r-2 border-t-2" />
+                <span className="absolute w-3 h-3 border-amber/70 bottom-0 left-0 border-l-2 border-b-2" />
+                <span className="absolute w-3 h-3 border-amber/70 bottom-0 right-0 border-r-2 border-b-2" />
+              </div>
+
               <div>
                 <div className="flex items-start justify-between mb-4">
                   <span className="font-mono text-xs text-mute">
@@ -78,3 +94,4 @@ export default function Projects() {
     </section>
   );
 }
+
