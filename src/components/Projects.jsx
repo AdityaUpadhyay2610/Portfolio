@@ -27,7 +27,7 @@ const PROJECTS = [
       "A text editing web application with real-time collaboration features, built with React and Node.js.",
     tags: ["Next.js", "Tailwind", "ReactJS", "Node.js"],
     githubUrl: "https://github.com/AdityaUpadhyay2610/text-app.git",
-    liveUrl: "https://text-app-phi.vercel.app/",
+    liveUrl: "https://text-app-beryl-one.vercel.app/",
 
   },
 ];
