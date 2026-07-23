@@ -9,7 +9,7 @@ const PROJECTS = [
       "A web application for managing library resources, built with Spring Boot, Spring Security, and MySQL.",
     tags: ["ReactJS", "Spring Boot", "MySQL", "Spring Security"],
     githubUrl: "https://github.com/AdityaUpadhyay2610/LibraryManagment.git",
-    liveUrl: "",
+    liveUrl: "https://library-managment-phi.vercel.app/",
   },
   {
     index: "02",
@@ -27,7 +27,7 @@ const PROJECTS = [
       "A text editing web application with real-time collaboration features, built with React and Node.js.",
     tags: ["Next.js", "Tailwind", "ReactJS", "Node.js"],
     githubUrl: "https://github.com/AdityaUpadhyay2610/text-app.git",
-    liveUrl: "https://adityaupadhyay2610.github.io/text-app/",
+    liveUrl: "https://text-app-phi.vercel.app/",
 
   },
 ];
