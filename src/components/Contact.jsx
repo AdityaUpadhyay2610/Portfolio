@@ -1,13 +1,43 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 import { Mail, MapPin, Send } from "lucide-react";
 
 export default function Contact() {
   const [status, setStatus] = useState("idle");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  function handleChange(e) {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
-    // Wire this up to your form backend of choice (Formspree, EmailJS, etc.)
-    setStatus("sent");
+    setStatus("sending");
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: import.meta.env.VITE_EMAILJS_TO_EMAIL,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+        setStatus("sent");
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch(() => {
+        setStatus("error");
+      });
   }
 
   return (
@@ -40,7 +70,7 @@ export default function Contact() {
               <div className="flex items-center gap-2 font-mono text-[11px] text-mute">
                 <span className="w-5 h-px bg-mute/60" />
                 <Mail size={14} className="text-amber" />
-                aditya2610upadhyay@gmail.com
+                upaaddi@gmail.com
               </div>
 
               {/* Contact item annotation (previously <Annotation>) */}
@@ -64,6 +94,8 @@ export default function Contact() {
                 id="name"
                 type="text"
                 required
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full bg-panel2 border border-line rounded-md px-4 py-3 text-paper text-sm placeholder:text-mute/60 focus:border-amber outline-none transition-colors"
                 placeholder="Your name"
               />
@@ -79,6 +111,8 @@ export default function Contact() {
                 id="email"
                 type="email"
                 required
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full bg-panel2 border border-line rounded-md px-4 py-3 text-paper text-sm placeholder:text-mute/60 focus:border-amber outline-none transition-colors"
                 placeholder="you@example.com"
               />
@@ -94,15 +128,24 @@ export default function Contact() {
                 id="message"
                 required
                 rows={4}
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full bg-panel2 border border-line rounded-md px-4 py-3 text-paper text-sm placeholder:text-mute/60 focus:border-amber outline-none transition-colors resize-none"
                 placeholder="Tell me about your project"
               />
             </div>
             <button
               type="submit"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-amber text-ink font-body font-semibold text-sm hover:bg-amber/90 transition-colors"
+              disabled={status === "sending"}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-amber text-ink font-body font-semibold text-sm hover:bg-amber/90 transition-colors disabled:opacity-70"
             >
-              {status === "sent" ? "Message sent" : "Send message"}
+              {status === "sending"
+                ? "Sending..."
+                : status === "sent"
+                ? "Message sent"
+                : status === "error"
+                ? "Try again"
+                : "Send message"}
               <Send size={16} />
             </button>
           </form>

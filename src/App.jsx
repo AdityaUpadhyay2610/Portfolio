@@ -24,6 +24,7 @@ function MainPage() {
 
 function AppContent() {
   const { theme, onToggleTheme } = usePortfolio();
+  const isLightMode = theme === "light";
 
   return (
     <div className="min-h-screen bg-ink text-paper transition-colors duration-300">
@@ -31,11 +32,11 @@ function AppContent() {
       <button
         type="button"
         onClick={onToggleTheme}
-        aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+        aria-label={`Switch to ${isLightMode ? "dark" : "light"} mode`}
         className="fixed top-4 right-20 z-50 hidden md:flex items-center gap-2 rounded-full border border-line bg-panel/90 px-3 py-2 text-sm text-paper shadow-sm backdrop-blur"
       >
-        {theme === "light" ? <MoonStar size={16} /> : <SunMedium size={16} />}
-        <span>{theme === "light" ? "Dark" : "Light"}</span>
+        {isLightMode ? <SunMedium size={16} /> : <MoonStar size={16} />}
+        <span>{isLightMode ? "Light" : "Dark"}</span>
       </button>
       <Sidebar />
       <main className="md:ml-sidebar-md lg:ml-sidebar">

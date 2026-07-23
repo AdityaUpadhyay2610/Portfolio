@@ -3,17 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --color-ink: #12141c;
-  --color-panel: #181c27;
-  --color-panel2: #1f2430;
-  --color-line: #2a3040;
-  --color-paper: #f3f1ea;
-  --color-mute: #8891a6;
-  --color-amber: #e8a33d;
-  --color-teal: #5fc9be;
-}
-
-html.theme-light {
   --color-ink: #f8efd0;
   --color-panel: #fff8e5;
   --color-panel2: #f3e7b8;
@@ -22,7 +11,18 @@ html.theme-light {
   --color-mute: #6d6752;
   --color-amber: #b97a0f;
   --color-teal: #0f766e;
-  color-scheme: light;
+}
+
+html.theme-dark {
+  --color-ink: #12141c;
+  --color-panel: #181c27;
+  --color-panel2: #1f2430;
+  --color-line: #2a3040;
+  --color-paper: #f3f1ea;
+  --color-mute: #8891a6;
+  --color-amber: #e8a33d;
+  --color-teal: #5fc9be;
+  color-scheme: dark;
 }
 
 html {

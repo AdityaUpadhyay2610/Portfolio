@@ -8,21 +8,28 @@ const PROJECTS = [
     description:
       "A web application for managing library resources, built with Spring Boot, Spring Security, and MySQL.",
     tags: ["ReactJS", "Spring Boot", "MySQL", "Spring Security"],
+    githubUrl: "https://github.com/AdityaUpadhyay2610/LibraryManagment.git",
+    liveUrl: "",
   },
   {
     index: "02",
     title: "GroCart",
     description:
       "A grocery shopping web application that allows users to browse and purchase groceries online, built with Next.js and Tailwind CSS.",
-    tags: ["Next.js", "Tailwind","ReactJS","Node.js","Spring Boot"],
+    tags: ["Next.js", "Tailwind", "ReactJS", "Node.js", "Spring Boot"],
+    githubUrl: "https://github.com/AdityaUpadhyay2610/GroCartAPP.git",
+    liveUrl:"",
   },
   {
     index: "03",
     title: "TextUtils",
     description:
       "A text editing web application with real-time collaboration features, built with React and Node.js.",
-    tags: ["Next.js", "Tailwind","ReactJS","Node.js"],
-  }
+    tags: ["Next.js", "Tailwind", "ReactJS", "Node.js"],
+    githubUrl: "https://github.com/AdityaUpadhyay2610/text-app.git",
+    liveUrl: "https://adityaupadhyay2610.github.io/text-app/",
+
+  },
 ];
 
 export default function Projects() {
@@ -49,7 +56,9 @@ export default function Projects() {
           {PROJECTS.map((project) => (
             <a
               key={project.title}
-              href="#"
+              href={project.liveUrl || project.githubUrl || "#"}
+              target={project.liveUrl || project.githubUrl ? "_blank" : undefined}
+              rel={project.liveUrl || project.githubUrl ? "noreferrer" : undefined}
               className="group relative flex flex-col justify-between p-6 rounded-lg bg-panel2 border border-line hover:border-amber/60 transition-colors min-h-[220px]"
             >
               {/* Corner Crop Marks (previously <CornerMarks>) */}
@@ -86,6 +95,16 @@ export default function Projects() {
                     {tag}
                   </span>
                 ))}
+                {project.githubUrl && (
+                  <span className="font-mono text-[11px] font-medium text-teal border border-teal/30 rounded-full px-2.5 py-1">
+                    GitHub
+                  </span>
+                )}
+                {project.liveUrl && (
+                  <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-white bg-red-600 border border-red-500 rounded-full px-2.5 py-1 shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_4px_10px_rgba(239,68,68,0.35)]">
+                    Live
+                  </span>
+                )}
               </div>
             </a>
           ))}

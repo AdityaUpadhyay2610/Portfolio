@@ -25,6 +25,7 @@ const ICON_MAP = {
 
 export default function Sidebar() {
   const { active, isOpen, theme, onToggle, onNavigate, onToggleTheme } = usePortfolio();
+  const isLightMode = theme === "light";
   const activeIndex = Math.max(
     0,
     NAV_ITEMS.findIndex((item) => item.id === active)
@@ -83,10 +84,10 @@ export default function Sidebar() {
             <button
               type="button"
               onClick={onToggleTheme}
-              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+              aria-label={`Switch to ${isLightMode ? "dark" : "light"} mode`}
               className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-line bg-panel2 text-paper transition-colors hover:border-amber hover:text-amber"
             >
-              {theme === "light" ? <MoonStar size={16} /> : <SunMedium size={16} />}
+              {isLightMode ? <SunMedium size={16} /> : <MoonStar size={16} />}
             </button>
           </div>
         </div>
@@ -103,10 +104,10 @@ export default function Sidebar() {
             <button
               type="button"
               onClick={onToggleTheme}
-              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+              aria-label={`Switch to ${isLightMode ? "dark" : "light"} mode`}
               className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-panel text-paper transition-colors hover:border-amber hover:text-amber"
             >
-              {theme === "light" ? <MoonStar size={16} /> : <SunMedium size={16} />}
+              {isLightMode ? <SunMedium size={16} /> : <MoonStar size={16} />}
             </button>
           </div>
 

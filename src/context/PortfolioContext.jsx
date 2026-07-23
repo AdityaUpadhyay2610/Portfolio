@@ -24,8 +24,8 @@ export function PortfolioProvider({ children }) {
 
   // 3. Keep track of the current theme (light or dark mode)
   const [theme, setTheme] = useState(() => {
-    // If it's saved in local storage, use that. Otherwise, default to "dark".
-    return localStorage.getItem("theme") || "dark";
+    // If it's saved in local storage, use that. Otherwise, default to "light".
+    return localStorage.getItem("theme") || "light";
   });
 
   // Whenever the theme changes, update the document class list and localStorage
