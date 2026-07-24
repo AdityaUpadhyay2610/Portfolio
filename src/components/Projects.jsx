@@ -18,7 +18,7 @@ const PROJECTS = [
       "A grocery shopping web application that allows users to browse and purchase groceries online, built with Next.js and Tailwind CSS.",
     tags: ["Next.js", "Tailwind", "ReactJS", "Node.js", "Spring Boot"],
     githubUrl: "https://github.com/AdityaUpadhyay2610/GroCartAPP.git",
-    liveUrl:"",
+    liveUrl:"https://grocart-webapp.vercel.app/",
   },
   {
     index: "03",
@@ -28,6 +28,16 @@ const PROJECTS = [
     tags: ["Next.js", "Tailwind", "ReactJS", "Node.js"],
     githubUrl: "https://github.com/AdityaUpadhyay2610/text-app.git",
     liveUrl: "https://text-app-beryl-one.vercel.app/",
+
+  },
+  {
+    index: "04",
+    title: "Music Player",
+    description:
+      "A music player web application with a modern UI, built with React and Node.js.",
+    tags: ["Next.js", "Tailwind", "ReactJS", "Node.js"],
+    githubUrl: "https://github.com/AdityaUpadhyay2610/music-player.git",
+    liveUrl: "",
 
   },
 ];
