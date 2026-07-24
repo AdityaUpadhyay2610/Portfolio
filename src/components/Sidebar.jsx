@@ -14,6 +14,7 @@ import {
   SunMedium,
 } from "lucide-react";
 import { usePortfolio, NAV_ITEMS } from "../context/PortfolioContext.jsx";
+import SidebarWidget from "./SidebarWidget.jsx";
 
 const ICON_MAP = {
   Home,
@@ -150,6 +151,11 @@ export default function Sidebar() {
             />
           </div>
         </nav>
+
+        {/* clock & weather widget */}
+        <div className="block md:hidden lg:block">
+          <SidebarWidget />
+        </div>
 
         {/* footer: socials + status */}
         <div className="px-6 md:px-0 lg:px-8 pb-8 pt-6 border-t border-line">
