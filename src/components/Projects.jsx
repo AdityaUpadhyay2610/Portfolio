@@ -7,7 +7,7 @@ const PROJECTS = [
     title: "Library Management Web App",
     description:
       "A web application for managing library resources, built with Spring Boot, Spring Security, and MySQL.",
-    tags: ["ReactJS", "Spring Boot", "MySQL", "Spring Security"],
+    tags: ["ReactJS", "NodeJS", "ExpressJS", "MongoDB"],
     githubUrl: "https://github.com/AdityaUpadhyay2610/LibraryManagment.git",
     liveUrl: "https://library-managment-phi.vercel.app/",
   },
@@ -16,8 +16,8 @@ const PROJECTS = [
     title: "GroCart",
     description:
       "A grocery shopping web application that allows users to browse and purchase groceries online, built with Next.js and Tailwind CSS.",
-    tags: ["Next.js", "Tailwind", "ReactJS", "Node.js", "Spring Boot"],
-    githubUrl: "https://github.com/AdityaUpadhyay2610/GroCartAPP.git",
+    tags: ["Next.js", "Tailwind", "ReactJS", "Node.js", "Firebase"],
+    githubUrl: "https://github.com/AdityaUpadhyay2610/grocart-webapp.git",
     liveUrl:"https://grocart-webapp.vercel.app/",
   },
   {
@@ -32,12 +32,12 @@ const PROJECTS = [
   },
   {
     index: "04",
-    title: "Music Player",
+    title: "Personal Workspace",
     description:
-      "A music player web application with a modern UI, built with React and Node.js.",
-    tags: ["Next.js", "Tailwind", "ReactJS", "Node.js"],
-    githubUrl: "https://github.com/AdityaUpadhyay2610/music-player.git",
-    liveUrl: "",
+      "A personal workspace for managing tasks and notes, built with React and Node.js.",
+    tags: ["Next.js", "Tailwind", "ReactJS", "Node.js","ExpressJS","MongoDB"],
+    githubUrl: "https://github.com/AdityaUpadhyay2610/personal_workspace.git",
+    liveUrl: "https://personal-workspace-seven-eta.vercel.app/",
 
   },
 ];
