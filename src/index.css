@@ -1,70 +1,147 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+/* ─── Design Tokens ─── */
 :root {
-  --color-ink: #f8efd0;
-  --color-panel: #fff8e5;
-  --color-panel2: #f3e7b8;
-  --color-line: #1f1f1f;
-  --color-paper: #161616;
-  --color-mute: #6d6752;
-  --color-amber: #b97a0f;
-  --color-teal: #0f766e;
+  /* Light theme (default) */
+  --bg: #FFFDF8;
+  --bg-peach: #FFE3BF;
+  --bg-amber: #FFD39A;
+  --surface: #FFF8ED;
+  --surface-2: #FFF0D9;
+  --border: rgba(14, 14, 14, 0.08);
+  --text: #0E0E0E;
+  --text-muted: #6B5E4B;
+  --accent: #C27A12;
+  --accent-hover: #A86610;
+  --accent-light: rgba(194, 122, 18, 0.1);
+
+  /* Font families */
+  --font-serif: "Instrument Serif", serif;
+  --font-heading: "Anton", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  color-scheme: light;
 }
 
-html.theme-dark {
-  --color-ink: #12141c;
-  --color-panel: #181c27;
-  --color-panel2: #1f2430;
-  --color-line: #2a3040;
-  --color-paper: #f3f1ea;
-  --color-mute: #8891a6;
-  --color-amber: #e8a33d;
-  --color-teal: #5fc9be;
+html.dark {
+  --bg: #12100D;
+  --bg-peach: #1E1A14;
+  --bg-amber: #2A2218;
+  --surface: #1A1714;
+  --surface-2: #231F1A;
+  --border: rgba(255, 253, 248, 0.08);
+  --text: #F5F0E8;
+  --text-muted: #9B8E7B;
+  --accent: #E8A33D;
+  --accent-hover: #F0B55A;
+  --accent-light: rgba(232, 163, 61, 0.12);
+
   color-scheme: dark;
 }
 
+/* ─── Base Styles ─── */
 html {
-  scroll-behavior: smooth;
+  /* Native smooth scroll disabled here as Lenis handles momentum smooth scrolling */
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  * {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
 body {
-  background-color: var(--color-ink);
-  color: var(--color-paper);
-  font-family: "Inter", sans-serif;
-  transition: background-color 200ms ease, color 200ms ease;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background-color: var(--color-amber);
-  color: var(--color-ink);
+  background-color: var(--accent);
+  color: var(--bg);
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-ink);
-}
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-line);
+  background-color: var(--border);
   border-radius: 999px;
-  border: 2px solid var(--color-ink);
 }
 
+/* ─── Modal Scrollbar ─── */
+.modal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-scroll::-webkit-scrollbar-track {
+  background: var(--surface);
+  border-radius: 999px;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 999px;
+}
+.modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--surface);
+}
+
+/* ─── Focus Visible ─── */
 :focus-visible {
-  outline: 2px solid var(--color-amber);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Grain Overlay ─── */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ─── Custom Cursor (desktop) ─── */
+@media (pointer: fine) {
+  .custom-cursor-area { cursor: none; }
+}
+
+/* ─── Marquee ─── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Typography Utilities ─── */
+.font-serif { font-family: var(--font-serif); }
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+.font-mono { font-family: var(--font-mono); }
+
+/* ─── Theme Transition ─── */
+html.transitioning,
+html.transitioning *,
+html.transitioning *::before,
+html.transitioning *::after {
+  transition: background-color 400ms ease, color 400ms ease, border-color 400ms ease, box-shadow 400ms ease !important;
 }
